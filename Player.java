@@ -15,8 +15,7 @@ public class Player{
 
     public boolean wantsToRoll(int myScore, int handScore, ArrayList<Integer> otherScores, int winningScore) {
         boolean role = true;
-        // through trial and error i got 32 as the quickest way to 100 on average of 10000 tests repeated 3 times for all values from 1 to 35
-        if (handScore >= 32) {
+        if (handScore >= (int) (Math.random() * 21) + 10) {
             role = false;
         }
         return role;

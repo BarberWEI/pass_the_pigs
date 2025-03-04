@@ -59,10 +59,12 @@ public class PassThePigs {
 
 
     // gets all player bank values
-    public ArrayList<Integer> getPlayersBankValues() {
+    public ArrayList<Integer> getPlayersBankValues(int playerNumber) {
         ArrayList<Integer> banks = new ArrayList<>();
-        for (int bank : playersBank) {
-            banks.add(bank);
+        for (int i = 0; i < playersBank.length; i++) {
+            if (i != playerNumber) {
+                banks.add(playersBank[i]);
+            }
         }
         return banks;
     }
@@ -86,6 +88,10 @@ public class PassThePigs {
 
     public void setPlayerBank(int playerNumber, int value) {
         playersBank[playerNumber] = value;
+    }
+
+    public int getPlayerBank(int playerNumber) {
+        return playersBank[playerNumber];
     }
 
 }
