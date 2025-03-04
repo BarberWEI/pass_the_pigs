@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class BotPlayer extends Player{
     private static final String STRATEGY = "this bot goes for 32 because thats what i tested to be good value. however, it changes based on how close the bot is to winning, and how close opponents are to winning";
+    private static final int RISK_MULTIPLIER = 1;
 
     public BotPlayer(String name) {
         super(name, STRATEGY);
@@ -12,32 +13,32 @@ public class BotPlayer extends Player{
         // through trial and error i got 32 as the quickest way to 100 on average of 10000 
         // tests repeated 3 times for all values from 1 to 35
         // also this says 20, but Idk https://www.reddit.com/r/boardgames/comments/n0ostv/a_mathematical_analysis_of_pass_the_pigs/
-        if (winningScore - myScore < 23) {
+        if (winningScore - myScore < 23 * RISK_MULTIPLIER) {
             if (handScore >= winningScore - myScore) {
                 role = false;
             }
         } else {
-            role = ifNotNearWinning(otherScores, winningScore, handScore);
+            role = ifNotNearWinning(otherScores, winningScore, handScore, RISK_MULTIPLIER);
         } 
         
         return role;
     }
 
     // method for clarity for when this bot is not near winning the game
-    private boolean ifNotNearWinning ( ArrayList<Integer> otherScores, int winningScore, int handScore) {
+    private boolean ifNotNearWinning ( ArrayList<Integer> otherScores, int winningScore, int handScore, int RISK_MULTIPLIER) {
         if (mostDangerousOpponnetProximity(otherScores, winningScore) < 10) {
-            if (handScore >= 40) {
+            if (handScore >= 40 * RISK_MULTIPLIER) {
                 return false;
             }
         } else if (mostDangerousOpponnetProximity(otherScores, winningScore) < 16) {
-            if (handScore >= 35) {
+            if (handScore >= 35 * RISK_MULTIPLIER) {
                 return false;
             }
         } else if (mostDangerousOpponnetProximity(otherScores, winningScore) < 22) {
-            if (handScore >= 30) {
+            if (handScore >= 30 * RISK_MULTIPLIER) {
                 return false;
             }
-        } else if (handScore >= 23) {
+        } else if (handScore >= 23 * RISK_MULTIPLIER) {
             return false;
         }
         return true;

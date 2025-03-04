@@ -16,8 +16,6 @@ class Main {
         PassThePigs piggy = new PassThePigs(players.size());
 
         while (!won) {
-            boolean piggedOut = false;
-            boolean passed = false;
             onePlayerTurn(playerNumber, players, piggy);
             displayGameStatus(players, piggy);
 
