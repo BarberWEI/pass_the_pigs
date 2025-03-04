@@ -13,39 +13,25 @@ class Main {
         players.add(new BotPlayer("tony"));
         PassThePigs piggy = new PassThePigs(players.size());
 
-
-        int[] whoWon = new int[totalPlayers];
-
-
-        for (int i = 0; i < 100000; i++) {
-            while (!won) {
-                boolean piggedOut = false;
-                boolean passed = false;
-
-                while (!piggedOut && !passed) {
-                    if (players.get(playerNumber).wantsToRoll(piggy.getPlayerBank(playerNumber), piggy.getHandValue(), piggy.getPlayersBankValues(playerNumber) , WINNING_SCORE )) {
-                        piggedOut = piggy.playerRolePigs(playerNumber);
-                    } else {
-                        passed = true;
-                    }
-                }
-                piggy.changePlayerBankAfterRound(playerNumber);
-
-                if (piggy.getPlayerBank(playerNumber) >= WINNING_SCORE) {
-                    whoWon[playerNumber]++;
-                    // System.out.println(players.get(playerNumber).getName() + " won");
-                    won = true;
+        while (!won) {
+            boolean piggedOut = false;
+            boolean passed = false;
+            System.out.print(players.get(playerNumber).getName() + " rolls a "); 
+            while (!piggedOut && !passed) {
+                if (players.get(playerNumber).wantsToRoll(piggy.getPlayerBank(playerNumber), piggy.getHandValue(), piggy.getPlayersBankValues(playerNumber) , WINNING_SCORE )) {
+                    piggedOut = piggy.playerRolePigs(playerNumber);
                 } else {
-                    playerNumber = (playerNumber + 1) % totalPlayers;
+                    passed = true;
                 }
             }
-            won = false;
-            for (int j = 0; j < totalPlayers; j++) {
-                piggy.setPlayerBank(j, 0);
+            piggy.changePlayerBankAfterRound(playerNumber);
+
+            if (piggy.getPlayerBank(playerNumber) >= WINNING_SCORE) {
+                // System.out.println(players.get(playerNumber).getName() + " won");
+                won = true;
+            } else {
+                playerNumber = (playerNumber + 1) % totalPlayers;
             }
-        }
-        for (int i = 0; i < totalPlayers; i++) {
-            System.out.print(whoWon[i] + " ");
-        }
+        } 
     } 
 }

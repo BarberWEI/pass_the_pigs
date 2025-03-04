@@ -2,7 +2,8 @@ import java.util.ArrayList;
 
 public class PassThePigs {
     private int[] playersBank;
-    private static final int[] pigValue = {15, 10, 5, 5, 0, 0};
+    private static final int[] PIG_VALUE = {15, 10, 5, 5, 0, 0};
+    private static final String[] PIG_NAMES = {"Leaning Jowler", "Snouter", "Trotter", "Razorback", "No Dot", "Dot"};
     private int handValue = 0;
 
     public PassThePigs(int amountOfPlayers) {
@@ -30,7 +31,7 @@ public class PassThePigs {
                 return 1;
             }
         } else {
-            return pigValue[pig1] + pigValue[pig2];
+            return PIG_VALUE[pig1] + PIG_VALUE[pig2];
         }
     }
 
@@ -38,6 +39,7 @@ public class PassThePigs {
         int[] pigsStatus = {0, 0};
         pigsStatus[0] = getPigRole();
         pigsStatus[1] = getPigRole();
+        System.out.print(PIG_NAMES[pigsStatus[0]] + " and a " + PIG_NAMES[pigsStatus[1]]);
         return pigsStatus;
     }
 
@@ -72,13 +74,13 @@ public class PassThePigs {
 
     public boolean playerRolePigs(int playerNumber) {
         int value = valueOfPigs();
+        System.out.println(" for a roll of " + value + " hand score is now " + handValue);
         if (value != 0) {
             handValue += value;
             return false;
         } else {
             handValue = 0;
             return true;
-
         }
     }
 
