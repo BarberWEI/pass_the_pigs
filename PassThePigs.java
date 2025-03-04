@@ -1,11 +1,17 @@
+import java.util.ArrayList;
+
 public class PassThePigs {
-    private int[][] playersHandsAndBank;
+    private int[] playersBank;
     private static final int[] pigValue = {15, 10, 5, 5, 0, 0};
+    private int handValue = 0;
+
     public PassThePigs(int amountOfPlayers) {
-        this.playersHandsAndBank = new int[amountOfPlayers][2];
+        this.playersBank = new int[amountOfPlayers];
     }
 
-
+    public int getHandValue() {
+        return handValue;
+    }
     // returns the value of the pigs based on what type of pigs were roled
     private int valueOfPigs() {
         int[] pigStatus = getPigsStatus();
@@ -52,22 +58,29 @@ public class PassThePigs {
     }
 
 
-    // gets all player hand and bank values
-    public int[][] getPlayerStats() {
-        return playersHandsAndBank;
+    // gets all player bank values
+    public ArrayList<Integer> getPlayersBankValues() {
+        ArrayList<Integer> banks = new ArrayList<>();
+        for (int bank : playersBank) {
+            banks.add(bank);
+        }
+        return banks;
     }
 
-    public void setPlayerHand(int playerNumber) {
+    public boolean playerRolePigs(int playerNumber) {
         int value = valueOfPigs();
         if (value != 0) {
-            playersHandsAndBank[playerNumber][1] += value;
+            handValue += value;
+            return false;
         } else {
-            playersHandsAndBank[playerNumber][1] = 0;
+            handValue = 0;
+            return true;
+
         }
     }
 
-    public void setPlayerBank(int playerNumber) {
-        playersHandsAndBank[playerNumber][0] += playersHandsAndBank[playerNumber][1];
-        playersHandsAndBank[playerNumber][1] = 0;
+    public void changePlayerBankAfterRound(int playerNumber) {
+        playersBank[playerNumber] += handValue;
+        handValue = 0;
     }
 }
