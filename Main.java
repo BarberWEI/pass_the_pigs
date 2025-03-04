@@ -26,7 +26,7 @@ class Main {
             piggy.changePlayerBankAfterRound(playerNumber);
 
             if (piggy.getPlayerBank(playerNumber) >= WINNING_SCORE) {
-                //System.out.println(players.get(playerNumber).getName() + " won")
+                System.out.println(players.get(playerNumber).getName() + " won");
                 won = true;
             } else {
                 playerNumber = (playerNumber + 1) % totalPlayers;

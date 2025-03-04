@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class BotPlayer extends Player{
-    private static final String STRATEGY = "human player";
+    private static final String STRATEGY = "this bot goes for 32 because thats what i tested to be good value. however, it changes based on how close the bot is to winning, and how close opponents are to winning";
 
     public BotPlayer(String name) {
         super(name, STRATEGY);
@@ -23,6 +23,7 @@ public class BotPlayer extends Player{
         return role;
     }
 
+    // method for clarity for when this bot is not near winning the game
     private boolean ifNotNearWinning ( ArrayList<Integer> otherScores, int winningScore, int handScore) {
         if (mostDangerousOpponnetProximity(otherScores, winningScore) < 10) {
             if (handScore >= 50) {
