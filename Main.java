@@ -3,14 +3,14 @@ import java.util.ArrayList;
 class Main {
     public static final int WINNING_SCORE = 100;
     public static void main (String[] args) {
-        int totalPlayers = 2;
+        int totalPlayers = 10;
         boolean won = false;
         int playerNumber = 0;
         ArrayList<Player> players = new ArrayList<>();
         for (int i = 0; i < totalPlayers - 1; i++) {
-            players.add(new BotPlayer("tony" + i));
+            players.add(new Player("tony" + i, "hi"));
         }
-        players.add(new Player("tony1", "hi"));
+        players.add(new BotPlayer("tony"));
         PassThePigs piggy = new PassThePigs(players.size());
 
 
@@ -44,6 +44,8 @@ class Main {
                 piggy.setPlayerBank(j, 0);
             }
         }
-        System.out.println(whoWon[0] + " " + whoWon[1]);
-    }
+        for (int i = 0; i < totalPlayers; i++) {
+            System.out.print(whoWon[i] + " ");
+        }
+    } 
 }
