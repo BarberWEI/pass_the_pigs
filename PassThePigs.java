@@ -83,4 +83,9 @@ public class PassThePigs {
         playersBank[playerNumber] += handValue;
         handValue = 0;
     }
+
+    public void setPlayerBank(int playerNumber, int value) {
+        playersBank[playerNumber] = value;
+    }
+
 }
