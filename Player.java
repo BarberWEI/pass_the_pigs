@@ -15,7 +15,10 @@ public class Player{
 
     public boolean wantsToRoll(int myScore, int handScore, ArrayList<Integer> otherScores, int winningScore) {
         boolean role = true;
-        if (handScore >= (int) (Math.random() * 21) + 10) {
+        // if (handScore >= (int) (Math.random() * 21) + 10) {
+        //     role = false;
+        // }
+        if (handScore >= 22) {
             role = false;
         }
         return role;

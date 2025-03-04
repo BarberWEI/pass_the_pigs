@@ -42,15 +42,16 @@ public class PassThePigs {
     }
 
     private int getPigRole() {
-        if (Math.random() <= 0.007) {
+        double randomNumber = Math.random();
+        if (randomNumber <= 0.007) {
             return 0;
-        } else if (Math.random() <= 0.037) {
+        } else if (randomNumber <= 0.037) {
             return 1;
-        } else if (Math.random() <= 0.125) {
+        } else if (randomNumber <= 0.125) {
             return 2;
-        } else if (Math.random() <= 0.349) {
+        } else if (randomNumber <= 0.349) {
             return 3;
-        } else if (Math.random() <= 0.651) {
+        } else if (randomNumber <= 0.651) {
             return 4;
         } else {
             return 5;

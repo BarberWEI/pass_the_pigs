@@ -11,8 +11,8 @@ public class BotPlayer extends Player{
         boolean role = true;
         // through trial and error i got 32 as the quickest way to 100 on average of 10000 
         // tests repeated 3 times for all values from 1 to 35
-        // this says 20, but Idk https://www.reddit.com/r/boardgames/comments/n0ostv/a_mathematical_analysis_of_pass_the_pigs/
-        if (winningScore - myScore < 32) {
+        // also this says 20, but Idk https://www.reddit.com/r/boardgames/comments/n0ostv/a_mathematical_analysis_of_pass_the_pigs/
+        if (winningScore - myScore < 23) {
             if (handScore >= winningScore - myScore) {
                 role = false;
             }
@@ -26,18 +26,18 @@ public class BotPlayer extends Player{
     // method for clarity for when this bot is not near winning the game
     private boolean ifNotNearWinning ( ArrayList<Integer> otherScores, int winningScore, int handScore) {
         if (mostDangerousOpponnetProximity(otherScores, winningScore) < 10) {
-            if (handScore >= 50) {
-                return false;
-            }
-        } else if (mostDangerousOpponnetProximity(otherScores, winningScore) < 20) {
-            if (handScore >= 45) {
-                return false;
-            }
-        } else if (mostDangerousOpponnetProximity(otherScores, winningScore) < 32) {
             if (handScore >= 40) {
                 return false;
             }
-        } else if (handScore >= 32) {
+        } else if (mostDangerousOpponnetProximity(otherScores, winningScore) < 16) {
+            if (handScore >= 35) {
+                return false;
+            }
+        } else if (mostDangerousOpponnetProximity(otherScores, winningScore) < 22) {
+            if (handScore >= 30) {
+                return false;
+            }
+        } else if (handScore >= 23) {
             return false;
         }
         return true;
