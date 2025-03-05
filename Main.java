@@ -9,9 +9,9 @@ class Main {
         ArrayList<Player> players = new ArrayList<>();
         // players.add(new HumanPlayer("tony"));
 
-        players.add(new Player("tony1", "hi"));
-        players.add(new Player("tony2", "hi", -1));
-        players.add(new Player("tony3", "hi", 1));
+        players.add(new BestBot("tony1"));
+        players.add(new RiskyBotPlayer("tony2"));
+        players.add(new ExponentialDecayBot("tony3"));
         PassThePigs piggy = new PassThePigs(players.size());
 
         int[] whoWon = new int[totalPlayers];

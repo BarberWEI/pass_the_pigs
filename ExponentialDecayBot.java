@@ -22,7 +22,7 @@ public class ExponentialDecayBot extends BotPlayer{
     }
 
     private double functionForRiskiness(int opponentClosestToWinning) {
-        return 51.80 * Math.exp(-0.0353 * opponentClosestToWinning);
+        return 46.39 * Math.exp(-0.0305 * opponentClosestToWinning);
     }
 
     // method for clarity to choose whether or not the bot should role when the bot is not near winning. 
