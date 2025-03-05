@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-// this is the most successful bot that has been tested
+// this is the most successful bot that has been tested against tens of other similar bots through the testBot class, also went aginst risky and exponential bot
 
 public class BestBot extends BotPlayer{
     private static final String STRATEGY = "this bot goes for 23 as the target value, but when opponents are close to winning, it goes for higher values";
@@ -31,18 +31,22 @@ public class BestBot extends BotPlayer{
     
         // honestly these were just randomly selected values but they work pretty well
         if (opponentClosestToWinning < 5) {
-            if (handScore >= 45 || winningScore - handScore  <= 0) {
+            if (handScore >= 50 || winningScore - handScore  <= 0) {
                 return false;
             }
         } else if (opponentClosestToWinning < 10) {
+            if (handScore >= 45 || winningScore - handScore  <= 0) {
+                return false;
+            }
+        } else if (opponentClosestToWinning < 15) {
             if (handScore >= 40 || winningScore - handScore  <= 0) {
                 return false;
             }
-        } else if (opponentClosestToWinning < 16) {
+        } else if (opponentClosestToWinning < 20) {
             if (handScore >= 35 || winningScore - handScore  <= 0) {
                 return false;
             }
-        } else if (opponentClosestToWinning < 22) {
+        } else if (opponentClosestToWinning < 25) {
             if (handScore >= 30 || winningScore - handScore  <= 0) {
                 return false;
             }
