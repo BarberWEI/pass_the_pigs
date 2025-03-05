@@ -1,16 +1,14 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Player{
+public abstract class Player {
     private String name;
     private String strategy;
     private int riskFactor = 0;
     Scanner sc = new Scanner(System.in);
 
-
-    public Player(String name, String strategy) {
+    public Player(String name) {
         this.name = name;
-        this.strategy = strategy;
     }
 
     public Player(String name, String strategy, int riskFactor) {
@@ -20,12 +18,9 @@ public class Player{
     }
 
     public boolean wantsToRoll(int myScore, int handScore, ArrayList<Integer> otherScores, int winningScore) {
-        boolean role = true;
-        if (handScore >= 23 + riskFactor) {
-            role = false;
-        }
+        boolean role = false;
         // if (handScore >= 22) {
-        //     role = false;
+        // role = false;
         // }
         return role;
     }

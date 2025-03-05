@@ -2,8 +2,8 @@ import java.util.ArrayList;
 
 public class PassThePigs {
     private int[] playersBank;
-    private static final int[] PIG_VALUE = {15, 10, 5, 5, 0, 0};
-    private static final String[] PIG_NAMES = {"Leaning Jowler", "Snouter", "Trotter", "Razorback", "No Dot", "Dot"};
+    private static final int[] PIG_VALUE = { 15, 10, 5, 5, 0, 0 };
+    private static final String[] PIG_NAMES = { "Leaning Jowler", "Snouter", "Trotter", "Razorback", "No Dot", "Dot" };
     private int handValue = 0;
 
     public PassThePigs(int amountOfPlayers) {
@@ -13,6 +13,7 @@ public class PassThePigs {
     public int getHandValue() {
         return handValue;
     }
+
     // returns the value of the pigs based on what type of pigs were roled
     private int valueOfPigs() {
         int[] pigStatus = getPigsStatus();
@@ -36,7 +37,7 @@ public class PassThePigs {
     }
 
     private int[] getPigsStatus() {
-        int[] pigsStatus = {0, 0};
+        int[] pigsStatus = { 0, 0 };
         pigsStatus[0] = getPigRole();
         pigsStatus[1] = getPigRole();
 
@@ -62,7 +63,6 @@ public class PassThePigs {
         }
     }
 
-
     // gets all player bank values
     public ArrayList<Integer> getPlayersBankValues(int playerNumber) {
         ArrayList<Integer> banks = new ArrayList<>();
@@ -76,7 +76,6 @@ public class PassThePigs {
 
     public boolean playerRolePigs(int playerNumber) {
         int value = valueOfPigs();
-
 
         if (value != 0) {
             handValue += value;

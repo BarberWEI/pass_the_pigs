@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 // this bot is used for testing successful bots against new ideas
 
-public class TestBot extends BotPlayer{
+public class TestBot extends BotPlayer {
     private static final String STRATEGY = "this is a test";
-    
+
     public TestBot(String name) {
         super(name, STRATEGY);
     }
@@ -16,16 +16,17 @@ public class TestBot extends BotPlayer{
             }
         } else {
             role = ifNotNearWinning(otherScores, winningScore, handScore);
-        } 
-        
+        }
+
         return role;
     }
 
-    // method for clarity to choose whether or not the bot should role when the bot is not near winning. 
+    // method for clarity to choose whether or not the bot should role when the bot
+    // is not near winning.
     // (when the score of the bot is less than 23 away from the winningScore)
-    private boolean ifNotNearWinning (ArrayList<Integer> otherScores, int winningScore, int handScore) {
+    private boolean ifNotNearWinning(ArrayList<Integer> otherScores, int winningScore, int handScore) {
         int opponentClosestToWinning = mostDangerousOpponnetProximity(otherScores, winningScore);
-    
+
         // New adjusted values within ±5 range
         if (opponentClosestToWinning < 7) { // Was <5
             if (handScore >= 52 || winningScore - handScore <= 0) { // Was 50
@@ -52,7 +53,5 @@ public class TestBot extends BotPlayer{
         }
         return true;
     }
-    
-    
-    
+
 }
