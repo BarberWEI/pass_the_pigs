@@ -3,30 +3,43 @@ import java.util.ArrayList;
 class Main {
     public static final int WINNING_SCORE = 100;
     public static void main (String[] args) {
-        int totalPlayers = 10;
+        int totalPlayers = 3;
         boolean won = false;
         int playerNumber = 0;
         ArrayList<Player> players = new ArrayList<>();
-
-        for (int i = 0; i < totalPlayers - 1; i++) {
-            players.add(new Player("tony " + i, "hi"));
-        }
         // players.add(new HumanPlayer("tony"));
-        players.add(new BotPlayer("tony21"));
+
+        players.add(new Player("tony1", "hi"));
+        players.add(new Player("tony2", "hi", -1));
+        players.add(new Player("tony3", "hi", 1));
         PassThePigs piggy = new PassThePigs(players.size());
 
-        while (!won) {
-            onePlayerTurn(playerNumber, players, piggy);
-            displayGameStatus(players, piggy);
+        int[] whoWon = new int[totalPlayers];
 
-            if (piggy.getPlayerBank(playerNumber) >= WINNING_SCORE) {
-                // System.out.println(players.get(playerNumber).getName() + " won");
-                won = true;
-                System.out.println("Game over! Winner is: " + players.get(playerNumber).getName());
-            } else {
-                playerNumber = (playerNumber + 1) % totalPlayers;
+        for (int i = 0; i < 100000; i++) {
+            playerNumber = 0;
+            won = false;
+            for (int j = 0; j < totalPlayers; j++) {
+                piggy.setPlayerBank(j, 0);
             }
-        } 
+            while (!won) {
+                onePlayerTurn(playerNumber, players, piggy);
+                displayGameStatus(players, piggy);
+
+                if (piggy.getPlayerBank(playerNumber) >= WINNING_SCORE) {
+                    // System.out.println(players.get(playerNumber).getName() + " won");
+                    whoWon[playerNumber]++;
+                    won = true;
+                    //System.out.println("Game over! Winner is: " + players.get(playerNumber).getName());
+                } else {
+                    playerNumber = (playerNumber + 1) % totalPlayers;
+                }
+            } 
+        }  
+
+        for (int who : whoWon) {
+            System.out.print(who + " ");
+        }
     } 
 
     // runs one player's turn
@@ -36,10 +49,10 @@ class Main {
 
         while (!piggedOut && !passed) {
             if (players.get(playerNumber).wantsToRoll(piggy.getPlayerBank(playerNumber), piggy.getHandValue(), piggy.getPlayersBankValues(playerNumber), WINNING_SCORE)) {     
-                System.out.print(players.get(playerNumber).getName() + " rolls a "); 
+                //System.out.print(players.get(playerNumber).getName() + " rolls a "); 
                 piggedOut = piggy.playerRolePigs(playerNumber);
             } else {
-                System.out.println(players.get(playerNumber).getName() + " passes");
+                //System.out.println(players.get(playerNumber).getName() + " passes");
                 passed = true;
             }
         }
@@ -49,8 +62,8 @@ class Main {
     // Shows the current game status
     private static void displayGameStatus(ArrayList<Player> players, PassThePigs piggy) {
         for (int i = 0; i < players.size(); i++) {
-            System.out.print(players.get(i).getName() + ": " + piggy.getPlayerBank(i) + " | ");
+            ///System.out.print(players.get(i).getName() + ": " + piggy.getPlayerBank(i) + " | ");
         }
-        System.out.println();
+        //System.out.println();
     }
 }

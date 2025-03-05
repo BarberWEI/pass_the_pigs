@@ -9,7 +9,7 @@ public class HumanPlayer extends Player{
         super(name, STRATEGY);
     }
 
-     public boolean wantsToRoll(int myScore, int handScore, ArrayList<Integer> otherScores, int winningScore) {
+    public boolean wantsToRoll(int myScore, int handScore, ArrayList<Integer> otherScores, int winningScore) {
         boolean role = false;
         System.out.println("dear " + getName() + " your handscore is: " + handScore + " your bank is: " + myScore + " the winning score is: " + winningScore + " your opponents have bank values of " + otherScores + " would you like to role the pigs？");
         System.out.println("y/n");
@@ -23,6 +23,7 @@ public class HumanPlayer extends Player{
         return role;
     }
 
+    // repeats asking player to input y or n until a valid input is given
     private String repeatUntilValidInput(String input) {
         String tempInput = input;
         while(!(tempInput.equals("n")) && !(tempInput.equals("y"))) {
