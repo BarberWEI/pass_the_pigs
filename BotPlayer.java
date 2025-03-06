@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class BotPlayer extends Player {
-    private static String STRATEGY = "this bot goes for 23 because thats what i tested to be good value. however, it changes based on how close the bot is to winning, and how close opponents are to winning";
+    private String STRATEGY = "this bot goes for 23 because thats what i tested to be good value. however, it changes based on how close the bot is to winning, and how close opponents are to winning";
 
     public BotPlayer(String name) {
         super(name);
