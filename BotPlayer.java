@@ -25,6 +25,9 @@ public class BotPlayer extends Player {
     // finds the value of the difference between the winning score and the highest
     // scoring opponent
     public int mostDangerousOpponnetProximity(ArrayList<Integer> otherScores, int winningScore) {
+        if (otherScores.size() == 0) {
+            return 1;
+        }
         int minDifference = winningScore - otherScores.get(0);
         for (int score : otherScores) {
             if (winningScore - score < minDifference) {

@@ -1,8 +1,8 @@
 import java.util.ArrayList;
-// this bot is used for testing successful bots against new ideas
+// this bot is more risk taking than other bots
 
 public class TestBot extends BotPlayer {
-    private static final String STRATEGY = "this is a test";
+    private static final String STRATEGY = "this bot goes for 32 as the target value, but when opponents are close to winning, it goes for higher values";
 
     public TestBot(String name) {
         super(name, STRATEGY);
@@ -10,7 +10,7 @@ public class TestBot extends BotPlayer {
 
     public boolean wantsToRoll(int myScore, int handScore, ArrayList<Integer> otherScores, int winningScore) {
         boolean role = true;
-        if (winningScore - myScore < 23) {
+        if (winningScore - myScore < 33) {
             if (handScore >= winningScore - myScore) {
                 role = false;
             }
@@ -23,35 +23,24 @@ public class TestBot extends BotPlayer {
 
     // method for clarity to choose whether or not the bot should role when the bot
     // is not near winning.
-    // (when the score of the bot is less than 23 away from the winningScore)
+    // (when the score of the bot is less than 32 away from the winningScore)
     private boolean ifNotNearWinning(ArrayList<Integer> otherScores, int winningScore, int handScore) {
-        int opponentClosestToWinning = mostDangerousOpponnetProximity(otherScores, winningScore);
-
-        // New adjusted values within ±5 range
-        if (opponentClosestToWinning < 7) { // Was <5
-            if (handScore >= 52 || winningScore - handScore <= 0) { // Was 50
+        int opponentClosestToWinning = super.mostDangerousOpponnetProximity(otherScores, winningScore);
+        if (opponentClosestToWinning < 5) {
+            if (handScore >= 50 || winningScore - handScore <= 0) {
                 return false;
             }
-        } else if (opponentClosestToWinning < 12) { // Was <10
-            if (handScore >= 47 || winningScore - handScore <= 0) { // Was 45
+        } else if (opponentClosestToWinning < 10) {
+            if (handScore >= 45 || winningScore - handScore <= 0) {
                 return false;
             }
-        } else if (opponentClosestToWinning < 17) { // Was <15
-            if (handScore >= 42 || winningScore - handScore <= 0) { // Was 40
+        } else if (opponentClosestToWinning < 16) {
+            if (handScore >= 40 || winningScore - handScore <= 0) {
                 return false;
             }
-        } else if (opponentClosestToWinning < 22) { // Was <20
-            if (handScore >= 37 || winningScore - handScore <= 0) { // Was 35
-                return false;
-            }
-        } else if (opponentClosestToWinning < 27) { // Was <25
-            if (handScore >= 32 || winningScore - handScore <= 0) { // Was 30
-                return false;
-            }
-        } else if (handScore >= 25) { // Was 23
+        } else if (handScore >= 32) {
             return false;
         }
         return true;
     }
-
 }

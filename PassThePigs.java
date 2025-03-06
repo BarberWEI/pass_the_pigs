@@ -41,7 +41,8 @@ public class PassThePigs {
         pigsStatus[0] = getPigRole();
         pigsStatus[1] = getPigRole();
 
-        System.out.print(PIG_NAMES[pigsStatus[0]] + " and a " + PIG_NAMES[pigsStatus[1]]);
+        // System.out.print(PIG_NAMES[pigsStatus[0]] + " and a " +
+        // PIG_NAMES[pigsStatus[1]]);
 
         return pigsStatus;
     }
@@ -80,13 +81,15 @@ public class PassThePigs {
         if (value != 0) {
             handValue += value;
 
-            System.out.println(" for a roll of " + value + ". hand score is now " + handValue + ".");
+            // System.out.println(" for a roll of " + value + ". hand score is now " +
+            // handValue + ".");
 
             return false;
         } else {
             handValue = 0;
 
-            System.out.println(" for a roll of " + value + " hand score is now " + handValue + " that's a Pig Out!");
+            // System.out.println(" for a roll of " + value + " hand score is now " +
+            // handValue + " that's a Pig Out!");
 
             return true;
         }

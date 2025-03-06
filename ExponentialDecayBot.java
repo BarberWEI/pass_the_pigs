@@ -22,8 +22,8 @@ public class ExponentialDecayBot extends BotPlayer {
         return role;
     }
 
-    private double functionForRiskiness(int opponentClosestToWinning) {
-        return 46.39 * Math.exp(-0.0305 * opponentClosestToWinning);
+    private double functionForRiskinessWhenDown(int opponentClosestToWinning) {
+        return 13 * Math.exp(0.0198 * opponentClosestToWinning) + 10;
     }
 
     // method for clarity to choose whether or not the bot should role when the bot
@@ -31,14 +31,14 @@ public class ExponentialDecayBot extends BotPlayer {
     // (when the score of the bot is less than 23 away from the winningScore)
     private boolean ifNotNearWinning(ArrayList<Integer> otherScores, int winningScore, int handScore) {
         int opponentClosestToWinning = super.mostDangerousOpponnetProximity(otherScores, winningScore);
-        if (opponentClosestToWinning < 23) {
-            if (handScore >= functionForRiskiness(opponentClosestToWinning) || winningScore - handScore <= 0) {
+        int distanceFromPlayer = winningScore - opponentClosestToWinning - handScore;
+
+        if(winningScore - opponentClosestToWinning > handScore) {
+            if (handScore >= functionForRiskinessWhenDown(distanceFromPlayer) || winningScore - handScore <= 0) {
                 return false;
             }
-        } else {
-            if (handScore >= 23) {
-                return false;
-            }
+        }  else if (handScore >= 23) {
+            return false;
         }
         return true;
     }
