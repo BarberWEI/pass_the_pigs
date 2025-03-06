@@ -16,6 +16,7 @@ class Main {
         players.add(new RiskyBotPlayer("riskyBot"));
         players.add(new BestBot("bestBot"));
         players.add(new ExponentialDecayBot("exponentialDecayBot"));
+        
         // players.add(new TestBot("testBot2"));
         // players.add(new RiskyBotPlayer("riskyBot2"));
         // players.add(new BestBot("bestBot2"));
