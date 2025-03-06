@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 // this is the most successful bot that has been tested against tens of other similar bots through the testBot class, also went aginst risky and exponential bot
 
-public class BestBot extends BotPlayer {
+public class Linear23Bot extends BotPlayer {
     private static final String STRATEGY = "this bot goes for 23 as the target value, but when opponents are close to winning, it goes for higher values";
 
-    public BestBot(String name) {
+    public Linear23Bot(String name) {
         super(name, STRATEGY);
     }
 

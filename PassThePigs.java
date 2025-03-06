@@ -5,9 +5,15 @@ public class PassThePigs {
     private static final int[] PIG_VALUE = { 15, 10, 5, 5, 0, 0 };
     private static final String[] PIG_NAMES = { "Leaning Jowler", "Snouter", "Trotter", "Razorback", "No Dot", "Dot" };
     private int handValue = 0;
+    private boolean printGame = true;;
 
     public PassThePigs(int amountOfPlayers) {
         this.playersBank = new int[amountOfPlayers];
+    }
+
+    public PassThePigs(int amountOfPlayers, boolean printGame) {
+        this.playersBank = new int[amountOfPlayers];
+        this.printGame = printGame;
     }
 
     public int getHandValue() {
@@ -41,9 +47,10 @@ public class PassThePigs {
         pigsStatus[0] = getPigRole();
         pigsStatus[1] = getPigRole();
 
-        // System.out.print(PIG_NAMES[pigsStatus[0]] + " and a " +
-        // PIG_NAMES[pigsStatus[1]]);
-
+        if (printGame) {
+            System.out.print(PIG_NAMES[pigsStatus[0]] + " and a " +
+                    PIG_NAMES[pigsStatus[1]]);
+        }
         return pigsStatus;
     }
 
@@ -80,17 +87,17 @@ public class PassThePigs {
 
         if (value != 0) {
             handValue += value;
-
-            // System.out.println(" for a roll of " + value + ". hand score is now " +
-            // handValue + ".");
-
+            if (printGame) {
+                System.out.println(" for a roll of " + value + ". hand score is now " +
+                        handValue + ".");
+            }
             return false;
         } else {
             handValue = 0;
-
-            // System.out.println(" for a roll of " + value + " hand score is now " +
-            // handValue + " that's a Pig Out!");
-
+            if (printGame) {
+                System.out.println(" for a roll of " + value + " hand score is now " +
+                        handValue + " that's a Pig Out!");
+            }
             return true;
         }
     }
