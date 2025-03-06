@@ -33,11 +33,11 @@ public class ExponentialDecayBot extends BotPlayer {
         int opponentClosestToWinning = super.mostDangerousOpponnetProximity(otherScores, winningScore);
         int distanceFromPlayer = winningScore - opponentClosestToWinning - handScore;
 
-        if(winningScore - opponentClosestToWinning > handScore) {
+        if (winningScore - opponentClosestToWinning > handScore) {
             if (handScore >= functionForRiskinessWhenDown(distanceFromPlayer) || winningScore - handScore <= 0) {
                 return false;
             }
-        }  else if (handScore >= 23) {
+        } else if (handScore >= 23) {
             return false;
         }
         return true;

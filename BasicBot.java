@@ -4,6 +4,7 @@ import java.util.ArrayList;
 public class BasicBot extends BotPlayer {
     private static final String STRATEGY = "this bot goes for 23 as the target value, but when opponents are close to winning, it goes for higher values";
     private int risk;
+
     public BasicBot(String name, int risk) {
         super(name, STRATEGY);
         this.risk = risk;
