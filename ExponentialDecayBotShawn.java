@@ -2,10 +2,10 @@ import java.util.ArrayList;
 // this bot's riskiness is based on an exponential function that is 50 when the opponnet closest to winning is 1 away from winning
 // and when the opponents are 23 away from winning, the player goes for 23
 
-public class ExponentialDecayBot extends BotPlayer {
+public class ExponentialDecayBotShawn extends BotPlayer {
     private static final String STRATEGY = "this bot's riskiness is based on an exponential function that is 50 when the opponnet closest to winning is 1 away from winning and when the opponents are 23 away from winning, the player goes for 23";
 
-    public ExponentialDecayBot(String name) {
+    public ExponentialDecayBotShawn(String name) {
         super(name, STRATEGY);
     }
 

@@ -13,9 +13,9 @@ class Main {
         // players.add(new HumanPlayer("tony"));
 
         // players.add(new TestBot("testBot"));
-        players.add(new RiskyBotPlayer("riskyBot"));
-        players.add(new Linear23Bot("linear23Bot"));
-        players.add(new ExponentialDecayBot("exponentialDecayBot"));
+        players.add(new RiskyBotPlayerShawn("riskyBot"));
+        players.add(new Linear23BotShawn("linear23Bot"));
+        players.add(new ExponentialDecayBotShawn("exponentialDecayBot"));
 
         // players.add(new TestBot("testBot2"));
         // players.add(new RiskyBotPlayer("riskyBot2"));

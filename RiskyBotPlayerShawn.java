@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 // this bot is more risk taking than other bots
 
-public class RiskyBotPlayer extends BotPlayer {
+public class RiskyBotPlayerShawn extends BotPlayer {
     private static final String STRATEGY = "this bot goes for 32 as the target value, but when opponents are close to winning, it goes for higher values";
 
-    public RiskyBotPlayer(String name) {
+    public RiskyBotPlayerShawn(String name) {
         super(name, STRATEGY);
     }
 
